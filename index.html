@@ -4,11 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Clear Seas Solutions LLC</title>
-  <link rel="stylesheet" href="styles.css">
+  <!-- Font Links -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader">
+      <img src="images/logo.png" alt="Loading...">
+    </div>
+  </div>
+
   <!-- Navigation Bar -->
   <header>
     <nav class="navbar">
@@ -62,6 +73,9 @@
       <p>Unlock efficiency and growth with our tailored AI solutions.</p>
       <a href="#services" class="btn-primary">Explore Our Services</a>
     </div>
+    <div class="scroll-indicator">
+      <span></span>
+    </div>
   </section>
 
   <!-- Services Section with Hover Effects -->
@@ -69,19 +83,19 @@
     <h2>Our Expertise</h2>
     <div class="services-grid">
       <div class="service-item">
-        <img src="images/icon-chatbot.svg" alt="Custom Chatbots">
+        <img src="images/icon-chatbot.svg" alt="Custom Chatbots" data-src="images/icon-chatbot.svg">
         <h3>Custom Chatbots</h3>
         <p>Enhance engagement with AI-driven chatbots tailored to your business.</p>
         <a href="#custom-chatbots" class="btn-secondary">Learn More</a>
       </div>
       <div class="service-item">
-        <img src="images/icon-analytics.svg" alt="Data Analytics">
+        <img src="images/icon-analytics.svg" alt="Data Analytics" data-src="images/icon-analytics.svg">
         <h3>Data Analytics</h3>
         <p>Unlock insights from your data to drive informed decisions.</p>
         <a href="#data-analytics" class="btn-secondary">Learn More</a>
       </div>
       <div class="service-item">
-        <img src="images/icon-integration.svg" alt="AI Integration">
+        <img src="images/icon-integration.svg" alt="AI Integration" data-src="images/icon-integration.svg">
         <h3>AI Integration</h3>
         <p>Seamlessly integrate AI into your existing systems.</p>
         <a href="#ai-integration" class="btn-secondary">Learn More</a>
@@ -121,19 +135,19 @@
     <h2>Case Studies</h2>
     <div class="case-studies-grid">
       <div class="case-study-item">
-        <img src="images/case-study-1.jpg" alt="Case Study 1">
+        <img src="images/case-study-1.jpg" alt="Case Study 1" data-src="images/case-study-1.jpg">
         <h3>Boosting Customer Engagement with AI Chatbots</h3>
         <p>Learn how we helped a retail company increase customer satisfaction by 30%.</p>
         <a href="#" class="btn-secondary">Read More</a>
       </div>
       <div class="case-study-item">
-        <img src="images/case-study-2.jpg" alt="Case Study 2">
+        <img src="images/case-study-2.jpg" alt="Case Study 2" data-src="images/case-study-2.jpg">
         <h3>Optimizing Supply Chain with Data Analytics</h3>
         <p>Discover how we streamlined operations for a logistics firm.</p>
         <a href="#" class="btn-secondary">Read More</a>
       </div>
       <div class="case-study-item">
-        <img src="images/case-study-3.jpg" alt="Case Study 3">
+        <img src="images/case-study-3.jpg" alt="Case Study 3" data-src="images/case-study-3.jpg">
         <h3>Enhancing Financial Services with AI Integration</h3>
         <p>See how we integrated AI solutions to improve financial forecasting.</p>
         <a href="#" class="btn-secondary">Read More</a>
@@ -172,9 +186,18 @@
   <section class="contact" id="contact">
     <h2>Contact Us</h2>
     <form>
-      <input type="text" name="name" placeholder="Name" required aria-label="Name">
-      <input type="email" name="email" placeholder="Email" required aria-label="Email">
-      <textarea name="message" placeholder="Message" required aria-label="Message"></textarea>
+      <div class="form-group">
+        <input type="text" name="name" required>
+        <label for="name">Name</label>
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" required>
+        <label for="email">Email</label>
+      </div>
+      <div class="form-group">
+        <textarea name="message" required></textarea>
+        <label for="message">Message</label>
+      </div>
       <button type="submit">Send Message</button>
     </form>
   </section>
