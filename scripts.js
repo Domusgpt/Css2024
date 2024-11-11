@@ -17,6 +17,14 @@ hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('toggle');
 });
 
+// Close navigation when clicking outside or on a link
+document.addEventListener('click', (e) => {
+  if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+    navLinks.classList.remove('nav-active');
+    hamburger.classList.remove('toggle');
+  }
+});
+
 navItems.forEach((item) => {
   item.addEventListener('click', () => {
     if (window.innerWidth <= 768) {
@@ -24,14 +32,6 @@ navItems.forEach((item) => {
       hamburger.classList.remove('toggle');
     }
   });
-});
-
-// Close navigation when clicking outside
-document.addEventListener('click', (e) => {
-  if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-    navLinks.classList.remove('nav-active');
-    hamburger.classList.remove('toggle');
-  }
 });
 
 // Dropdown Toggle for Mobile
