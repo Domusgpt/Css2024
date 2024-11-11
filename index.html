@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Clear Seas Solutions LLC</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Font Awesome for icons (optional, can be replaced with SVGs) -->
+  <!-- Font Awesome for social media icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -17,34 +17,34 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="#services">Services</a>
+          <a href="#services" class="dropdown-toggle">Services <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown">
-            <li><a href="#">Custom Chatbots</a></li>
-            <li><a href="#">Data Analytics</a></li>
-            <li><a href="#">AI Integration</a></li>
+            <li><a href="#custom-chatbots">Custom Chatbots</a></li>
+            <li><a href="#data-analytics">Data Analytics</a></li>
+            <li><a href="#ai-integration">AI Integration</a></li>
           </ul>
         </li>
         <li>
-          <a href="#industries">Industries</a>
+          <a href="#industries" class="dropdown-toggle">Industries <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown">
-            <li><a href="#">Healthcare</a></li>
-            <li><a href="#">Finance</a></li>
-            <li><a href="#">Retail</a></li>
+            <li><a href="#healthcare">Healthcare</a></li>
+            <li><a href="#finance">Finance</a></li>
+            <li><a href="#retail">Retail</a></li>
           </ul>
         </li>
         <li><a href="#blog">Insights</a></li>
         <li>
-          <a href="#about">About Us</a>
+          <a href="#about" class="dropdown-toggle">About Us <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown">
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Mission</a></li>
-            <li><a href="#">Careers</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#careers">Careers</a></li>
           </ul>
         </li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="search-bar">
-        <input type="text" placeholder="Search...">
+        <input type="text" placeholder="Search..." aria-label="Search">
         <button type="submit"><i class="fas fa-search"></i></button>
       </div>
       <div class="hamburger">
@@ -72,20 +72,21 @@
         <img src="images/icon-chatbot.svg" alt="Custom Chatbots">
         <h3>Custom Chatbots</h3>
         <p>Enhance engagement with AI-driven chatbots tailored to your business.</p>
-        <a href="#" class="btn-secondary">Learn More</a>
+        <a href="#custom-chatbots" class="btn-secondary">Learn More</a>
       </div>
       <div class="service-item">
         <img src="images/icon-analytics.svg" alt="Data Analytics">
         <h3>Data Analytics</h3>
         <p>Unlock insights from your data to drive informed decisions.</p>
-        <a href="#" class="btn-secondary">Learn More</a>
+        <a href="#data-analytics" class="btn-secondary">Learn More</a>
       </div>
       <div class="service-item">
         <img src="images/icon-integration.svg" alt="AI Integration">
         <h3>AI Integration</h3>
         <p>Seamlessly integrate AI into your existing systems.</p>
-        <a href="#" class="btn-secondary">Learn More</a>
+        <a href="#ai-integration" class="btn-secondary">Learn More</a>
       </div>
+      <!-- Add more service items as needed -->
     </div>
   </section>
 
@@ -108,7 +109,11 @@
         <h4>Mike Johnson</h4>
         <span>COO, Tech Solutions</span>
       </div>
+      <!-- Add more testimonials as needed -->
     </div>
+    <!-- Optional: Carousel Controls -->
+    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
   </section>
 
   <!-- Case Studies Section -->
@@ -119,6 +124,18 @@
         <img src="images/case-study-1.jpg" alt="Case Study 1">
         <h3>Boosting Customer Engagement with AI Chatbots</h3>
         <p>Learn how we helped a retail company increase customer satisfaction by 30%.</p>
+        <a href="#" class="btn-secondary">Read More</a>
+      </div>
+      <div class="case-study-item">
+        <img src="images/case-study-2.jpg" alt="Case Study 2">
+        <h3>Optimizing Supply Chain with Data Analytics</h3>
+        <p>Discover how we streamlined operations for a logistics firm.</p>
+        <a href="#" class="btn-secondary">Read More</a>
+      </div>
+      <div class="case-study-item">
+        <img src="images/case-study-3.jpg" alt="Case Study 3">
+        <h3>Enhancing Financial Services with AI Integration</h3>
+        <p>See how we integrated AI solutions to improve financial forecasting.</p>
         <a href="#" class="btn-secondary">Read More</a>
       </div>
       <!-- Add more case studies as needed -->
@@ -135,6 +152,18 @@
           <p>We offer custom chatbots, data analytics, and AI integration services.</p>
         </div>
       </div>
+      <div class="faq-item">
+        <button class="faq-question">How can AI benefit my business?</button>
+        <div class="faq-answer">
+          <p>AI can streamline operations, enhance customer engagement, and provide valuable insights from your data.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What industries do you serve?</button>
+        <div class="faq-answer">
+          <p>We cater to various industries including healthcare, finance, retail, and more.</p>
+        </div>
+      </div>
       <!-- Add more FAQ items as needed -->
     </div>
   </section>
@@ -143,9 +172,9 @@
   <section class="contact" id="contact">
     <h2>Contact Us</h2>
     <form>
-      <input type="text" name="name" placeholder="Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <textarea name="message" placeholder="Message" required></textarea>
+      <input type="text" name="name" placeholder="Name" required aria-label="Name">
+      <input type="email" name="email" placeholder="Email" required aria-label="Email">
+      <textarea name="message" placeholder="Message" required aria-label="Message"></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
@@ -174,13 +203,14 @@
       </div>
       <div class="footer-section social">
         <h3>Follow Us</h3>
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://facebook.com/yourpage" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/yourprofile" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <!-- Add more social media links as needed -->
       </div>
     </div>
     <div class="footer-bottom">
-      &copy; 2023 Clear Seas Solutions LLC | All Rights Reserved
+      &copy; 2024 Clear Seas Solutions LLC | All Rights Reserved
     </div>
   </footer>
 
