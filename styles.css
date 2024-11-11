@@ -78,8 +78,9 @@ header {
   list-style: none;
   padding: 10px 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 999;
 }
-.nav-links li:hover .dropdown {
+.nav-links li:hover > .dropdown {
   display: block;
 }
 .dropdown li {
@@ -135,10 +136,11 @@ header {
 
 /* Parallax Hero Section Styling */
 .hero {
-  background-image: url('images/hero-bg.jpg');
+  background-image: url('images/hero-bg.jpg'); /* Replace with your image path */
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
   position: relative;
   overflow: hidden;
@@ -163,10 +165,10 @@ header {
   transform: translateY(-50%);
 }
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 2rem; /* Adjusted for better fit */
   color: var(--light-text-color);
   margin-bottom: 20px;
-  animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+  animation: typing 6s steps(40, end), blink 0.75s step-end infinite;
   overflow: hidden;
   white-space: nowrap;
   border-right: 3px solid var(--secondary-color);
@@ -224,11 +226,12 @@ header {
   flex: 1 1 calc(33.333% - 60px);
   max-width: calc(33.333% - 60px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform var(--transition-speed);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
   text-align: center;
 }
 .service-item:hover {
   transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 .service-item img {
   width: 60px;
@@ -269,11 +272,11 @@ header {
   font-size: 2rem;
 }
 .carousel {
-  position: relative;
+  display: flex;
   overflow: hidden;
   max-width: 800px;
   margin: 0 auto;
-  display: flex;
+  position: relative;
 }
 .carousel .testimonial {
   min-width: 100%;
@@ -291,6 +294,30 @@ header {
 .testimonial span {
   font-size: 0.9rem;
   color: #ccc;
+}
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: var(--light-text-color);
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1rem;
+  transition: background var(--transition-speed);
+}
+.carousel-prev:hover,
+.carousel-next:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+.carousel-prev {
+  left: 10px;
+}
+.carousel-next {
+  right: 10px;
 }
 
 /* Case Studies Section */
@@ -334,6 +361,9 @@ header {
 .case-study-item p {
   margin: 0 20px 20px;
   font-size: 1rem;
+}
+.case-study-item .btn-secondary {
+  margin: 0 20px 20px;
 }
 
 /* FAQ Section */
@@ -464,6 +494,7 @@ footer {
   font-size: 1.5rem;
   margin-right: 15px;
   color: var(--light-text-color);
+  transition: color var(--transition-speed);
 }
 .footer-section.social a:hover {
   color: var(--secondary-color);
@@ -476,13 +507,21 @@ footer {
 
 /* Media Queries for Responsiveness */
 @media (max-width: 1024px) {
+  .services-grid, .case-studies-grid {
+    flex-direction: row;
+    justify-content: center;
+  }
   .service-item, .case-study-item {
     flex: 1 1 calc(50% - 60px);
     max-width: calc(50% - 60px);
   }
 }
+
 @media (max-width: 768px) {
   /* Navigation */
+  .hamburger {
+    display: flex;
+  }
   .nav-links {
     position: fixed;
     right: 0;
@@ -495,6 +534,9 @@ footer {
     transform: translateX(100%);
     transition: transform var(--transition-speed) ease-in;
   }
+  .nav-links.nav-active {
+    transform: translateX(0%);
+  }
   .nav-links li {
     margin: 20px 0;
   }
@@ -502,16 +544,14 @@ footer {
     position: static;
     box-shadow: none;
   }
-  .nav-links li:hover .dropdown {
+  .nav-links li:hover > .dropdown {
     display: none;
   }
-  .hamburger {
-    display: flex;
+  /* Hide search bar on mobile */
+  .search-bar {
+    display: none;
   }
-  .nav-links.nav-active {
-    transform: translateX(0%);
-  }
-  /* Services, Case Studies */
+  /* Services, Case Studies, Blog Posts */
   .service-item, .case-study-item {
     flex: 1 1 100%;
     max-width: 100%;
@@ -521,13 +561,9 @@ footer {
     flex-direction: column;
     align-items: center;
   }
-  /* Search Bar */
-  .search-bar {
-    display: none;
-  }
   /* Hero Section */
   .hero h1 {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Adjusted for mobile */
   }
 }
 
