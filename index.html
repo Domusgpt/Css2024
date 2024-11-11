@@ -8,6 +8,52 @@
   <script src="scripts.js" defer></script>
 </head>
 <body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#home">Clear Seas Solutions LLC</a>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="#services">Services</a>
+          <ul class="dropdown">
+            <li><a href="#">Custom Chatbots</a></li>
+            <li><a href="#">Data Analytics</a></li>
+            <li><a href="#">AI Integration</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#industries">Industries</a>
+          <ul class="dropdown">
+            <li><a href="#">Healthcare</a></li>
+            <li><a href="#">Finance</a></li>
+            <li><a href="#">Retail</a></li>
+          </ul>
+        </li>
+        <li><a href="#blog">Insights</a></li>
+        <li>
+          <a href="#about">About Us</a>
+          <ul class="dropdown">
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Mission</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button type="submit"><img src="icon-search.svg" alt="Search"></button>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
   <!-- Parallax Hero Section -->
   <section class="hero" id="home">
     <div class="hero-content">
@@ -27,6 +73,18 @@
         <p>Enhance engagement with AI-driven chatbots tailored to your business.</p>
         <a href="#" class="btn-secondary">Learn More</a>
       </div>
+      <div class="service-item">
+        <img src="icon-analytics.svg" alt="Data Analytics">
+        <h3>Data Analytics</h3>
+        <p>Unlock insights from your data to drive informed decisions.</p>
+        <a href="#" class="btn-secondary">Learn More</a>
+      </div>
+      <div class="service-item">
+        <img src="icon-integration.svg" alt="AI Integration">
+        <h3>AI Integration</h3>
+        <p>Seamlessly integrate AI into your existing systems.</p>
+        <a href="#" class="btn-secondary">Learn More</a>
+      </div>
     </div>
   </section>
 
@@ -39,6 +97,44 @@
         <h4>John Smith</h4>
         <span>CEO, ABC Corp</span>
       </div>
+      <div class="testimonial">
+        <p>“Their data analytics provided insights we never thought possible.”</p>
+        <h4>Jane Doe</h4>
+        <span>CTO, XYZ Ltd</span>
+      </div>
+      <div class="testimonial">
+        <p>“Exceptional service and support throughout our AI integration.”</p>
+        <h4>Mike Johnson</h4>
+        <span>COO, Tech Solutions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section class="case-studies" id="case-studies">
+    <h2>Case Studies</h2>
+    <div class="case-studies-grid">
+      <div class="case-study-item">
+        <img src="case-study-1.jpg" alt="Case Study 1">
+        <h3>Boosting Customer Engagement with AI Chatbots</h3>
+        <p>Learn how we helped a retail company increase customer satisfaction by 30%.</p>
+        <a href="#" class="btn-secondary">Read More</a>
+      </div>
+      <!-- Add more case studies as needed -->
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-question">What services do you offer?</button>
+        <div class="faq-answer">
+          <p>We offer custom chatbots, data analytics, and AI integration services.</p>
+        </div>
+      </div>
+      <!-- Add more FAQ items as needed -->
     </div>
   </section>
 
@@ -46,11 +142,48 @@
   <section class="contact" id="contact">
     <h2>Contact Us</h2>
     <form>
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Email" required>
-      <textarea placeholder="Message" required></textarea>
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="message" placeholder="Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>Empowering businesses with AI-driven solutions.</p>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#case-studies">Case Studies</a></li>
+          <li><a href="#blog">Insights</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section contact">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 AI Street, Tech City</p>
+        <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+        <p><i class="fas fa-envelope"></i> info@clearseassolutions.com</p>
+      </div>
+      <div class="footer-section social">
+        <h3>Follow Us</h3>
+        <a href="#"><img src="icon-facebook.svg" alt="Facebook"></a>
+        <a href="#"><img src="icon-twitter.svg" alt="Twitter"></a>
+        <a href="#"><img src="icon-linkedin.svg" alt="LinkedIn"></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2023 Clear Seas Solutions LLC | All Rights Reserved
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts.js" defer></script>
 </body>
 </html>
