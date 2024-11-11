@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Clear Seas Solutions LLC</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Font Awesome for social media icons -->
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -15,9 +15,14 @@
       <div class="logo">
         <a href="#home">Clear Seas Solutions LLC</a>
       </div>
+      <div class="hamburger" aria-label="Toggle navigation menu" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <ul class="nav-links">
         <li>
-          <a href="#services" class="dropdown-toggle">Services <i class="fas fa-caret-down"></i></a>
+          <a href="#services" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Services <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown">
             <li><a href="#custom-chatbots">Custom Chatbots</a></li>
             <li><a href="#data-analytics">Data Analytics</a></li>
@@ -25,7 +30,7 @@
           </ul>
         </li>
         <li>
-          <a href="#industries" class="dropdown-toggle">Industries <i class="fas fa-caret-down"></i></a>
+          <a href="#industries" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Industries <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown">
             <li><a href="#healthcare">Healthcare</a></li>
             <li><a href="#finance">Finance</a></li>
@@ -34,7 +39,7 @@
         </li>
         <li><a href="#blog">Insights</a></li>
         <li>
-          <a href="#about" class="dropdown-toggle">About Us <i class="fas fa-caret-down"></i></a>
+          <a href="#about" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">About Us <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown">
             <li><a href="#team">Team</a></li>
             <li><a href="#mission">Mission</a></li>
@@ -45,12 +50,7 @@
       </ul>
       <div class="search-bar">
         <input type="text" placeholder="Search..." aria-label="Search">
-        <button type="submit"><i class="fas fa-search"></i></button>
-      </div>
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+        <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
       </div>
     </nav>
   </header>
@@ -111,9 +111,9 @@
       </div>
       <!-- Add more testimonials as needed -->
     </div>
-    <!-- Optional: Carousel Controls -->
-    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
-    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+    <!-- Carousel Controls -->
+    <button class="carousel-prev" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
+    <button class="carousel-next" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
   </section>
 
   <!-- Case Studies Section -->
@@ -147,19 +147,19 @@
     <h2>Frequently Asked Questions</h2>
     <div class="faq-container">
       <div class="faq-item">
-        <button class="faq-question">What services do you offer?</button>
+        <button class="faq-question" aria-expanded="false">What services do you offer?</button>
         <div class="faq-answer">
           <p>We offer custom chatbots, data analytics, and AI integration services.</p>
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">How can AI benefit my business?</button>
+        <button class="faq-question" aria-expanded="false">How can AI benefit my business?</button>
         <div class="faq-answer">
           <p>AI can streamline operations, enhance customer engagement, and provide valuable insights from your data.</p>
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">What industries do you serve?</button>
+        <button class="faq-question" aria-expanded="false">What industries do you serve?</button>
         <div class="faq-answer">
           <p>We cater to various industries including healthcare, finance, retail, and more.</p>
         </div>
