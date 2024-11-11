@@ -1,3 +1,12 @@
+// Preloader
+window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+  preloader.classList.add('fade-out');
+  setTimeout(() => {
+    preloader.style.display = 'none';
+  }, 1000);
+});
+
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
@@ -6,6 +15,15 @@ const navItems = document.querySelectorAll('.nav-links li');
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('nav-active');
   hamburger.classList.toggle('toggle');
+});
+
+navItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      navLinks.classList.remove('nav-active');
+      hamburger.classList.remove('toggle');
+    }
+  });
 });
 
 // Close navigation when clicking outside
@@ -45,6 +63,22 @@ const observer = new IntersectionObserver((entries) => {
 
 sections.forEach((section) => {
   observer.observe(section);
+});
+
+// Element Reveal on Scroll
+const revealElements = document.querySelectorAll('.service-item, .case-study-item, .faq-item');
+
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('reveal');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+revealElements.forEach((el) => {
+  revealObserver.observe(el);
 });
 
 // Testimonials Carousel Functionality
@@ -90,6 +124,11 @@ carouselNext.addEventListener('click', () => {
   showTestimonial(currentIndex);
   startCarousel();
 });
+
+// Pause carousel on hover
+const carousel = document.querySelector('.carousel');
+carousel.addEventListener('mouseover', stopCarousel);
+carousel.addEventListener('mouseout', startCarousel);
 
 // FAQ Accordion
 const faqQuestions = document.querySelectorAll('.faq-question');
@@ -186,25 +225,46 @@ searchButton.addEventListener('click', (e) => {
   }
 });
 
-// Lazy Loading Images
+// Lazy Loading Images with Blur Effect
 document.addEventListener('DOMContentLoaded', () => {
-  const lazyImages = document.querySelectorAll('img');
+  const lazyImages = document.querySelectorAll('img[data-src]');
   const imageObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const img = entry.target;
-        if (img.dataset.src) {
-          img.src = img.dataset.src;
+        img.style.filter = 'blur(10px)';
+        img.src = img.dataset.src;
+        img.onload = () => {
+          img.style.filter = 'blur(0)';
           img.removeAttribute('data-src');
-        }
+        };
         observer.unobserve(img);
       }
     });
   });
 
   lazyImages.forEach(img => {
-    if (img.dataset.src) {
-      imageObserver.observe(img);
-    }
+    imageObserver.observe(img);
+  });
+});
+
+// Interactive Cursor (Optional)
+const cursor = document.createElement('div');
+cursor.classList.add('custom-cursor');
+document.body.appendChild(cursor);
+
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+
+const interactiveElements = document.querySelectorAll('a, button, .service-item');
+
+interactiveElements.forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.classList.add('active');
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.classList.remove('active');
   });
 });
