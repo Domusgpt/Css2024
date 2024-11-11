@@ -6,19 +6,22 @@ hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('nav-active');
 });
 
-// IntersectionObserver for Scroll Animations (if needed)
+// IntersectionObserver for Scroll Animations
 const sections = document.querySelectorAll('section');
 const options = { threshold: 0.1 };
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
+      observer.unobserve(entry.target); // Stop observing once it's visible
     }
   });
 }, options);
 
-sections.forEach(section => observer.observe(section));
+sections.forEach((section) => {
+  observer.observe(section);
+});
 
 // Testimonials Carousel Functionality
 let currentIndex = 0;
@@ -44,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // FAQ Accordion
 const faqQuestions = document.querySelectorAll('.faq-question');
 
-faqQuestions.forEach(question => {
+faqQuestions.forEach((question) => {
   question.addEventListener('click', () => {
     question.classList.toggle('active');
     const answer = question.nextElementSibling;
@@ -59,15 +62,15 @@ faqQuestions.forEach(question => {
 
 // Contact Form Validation
 const contactForm = document.querySelector('.contact form');
+
 contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  // Perform validation checks
   const name = contactForm.querySelector('input[name="name"]');
   const email = contactForm.querySelector('input[name="email"]');
   const message = contactForm.querySelector('textarea[name="message"]');
 
-  if (name.value === '' || email.value === '' || message.value === '') {
+  if (name.value.trim() === '' || email.value.trim() === '' || message.value.trim() === '') {
     alert('Please fill in all fields.');
   } else {
     // Simulate form submission
@@ -77,25 +80,33 @@ contactForm.addEventListener('submit', (e) => {
 });
 
 // Smooth Scrolling
-const scrollLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+const scrollLinks = document.querySelectorAll('a[href^="#"]');
 
-scrollLinks.forEach(link => {
+scrollLinks.forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
     const target = document.querySelector(link.getAttribute('href'));
 
-    target.scrollIntoView({
-      behavior: 'smooth'
-    });
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
   });
 });
 
-// Search Functionality (Basic Implementation)
+// Search Functionality (Placeholder)
 const searchInput = document.querySelector('.search-bar input');
 const searchButton = document.querySelector('.search-bar button');
 
-searchButton.addEventListener('click', () => {
-  const query = searchInput.value.toLowerCase();
-  alert('Search functionality is under development.');
-  // Implement search logic or redirect to a search results page
+searchButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  const query = searchInput.value.trim();
+  if (query) {
+    alert(`Search functionality is under development. You searched for: "${query}"`);
+    // Implement search logic or redirect to a results page in the future
+  } else {
+    alert('Please enter a search term.');
+  }
 });
