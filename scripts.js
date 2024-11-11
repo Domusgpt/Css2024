@@ -1,12 +1,22 @@
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
+const navItems = document.querySelectorAll('.nav-links li');
 
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('nav-active');
+  hamburger.classList.toggle('toggle');
 });
 
-// Dropdown Toggle for Mobile (Click to open dropdowns)
+// Close navigation when clicking outside
+document.addEventListener('click', (e) => {
+  if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+    navLinks.classList.remove('nav-active');
+    hamburger.classList.remove('toggle');
+  }
+});
+
+// Dropdown Toggle for Mobile
 const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
 dropdownToggles.forEach(toggle => {
@@ -15,6 +25,7 @@ dropdownToggles.forEach(toggle => {
       e.preventDefault(); // Prevent default link behavior
       const dropdown = toggle.nextElementSibling;
       dropdown.classList.toggle('dropdown-active');
+      toggle.setAttribute('aria-expanded', dropdown.classList.contains('dropdown-active'));
     }
   });
 });
@@ -42,6 +53,7 @@ const testimonials = document.querySelectorAll('.testimonial');
 const totalTestimonials = testimonials.length;
 const carouselPrev = document.querySelector('.carousel-prev');
 const carouselNext = document.querySelector('.carousel-next');
+let carouselInterval;
 
 function showTestimonial(index) {
   testimonials.forEach((testimonial, i) => {
@@ -49,41 +61,52 @@ function showTestimonial(index) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  showTestimonial(currentIndex);
-
-  // Auto-rotate testimonials every 5 seconds
-  setInterval(() => {
+function startCarousel() {
+  carouselInterval = setInterval(() => {
     currentIndex = (currentIndex + 1) % totalTestimonials;
     showTestimonial(currentIndex);
   }, 5000);
+}
+
+function stopCarousel() {
+  clearInterval(carouselInterval);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  showTestimonial(currentIndex);
+  startCarousel();
 });
 
-// Carousel Controls (Optional)
-if (carouselPrev && carouselNext) {
-  carouselPrev.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
-    showTestimonial(currentIndex);
-  });
+carouselPrev.addEventListener('click', () => {
+  stopCarousel();
+  currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
+  showTestimonial(currentIndex);
+  startCarousel();
+});
 
-  carouselNext.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % totalTestimonials;
-    showTestimonial(currentIndex);
-  });
-}
+carouselNext.addEventListener('click', () => {
+  stopCarousel();
+  currentIndex = (currentIndex + 1) % totalTestimonials;
+  showTestimonial(currentIndex);
+  startCarousel();
+});
 
 // FAQ Accordion
 const faqQuestions = document.querySelectorAll('.faq-question');
 
 faqQuestions.forEach((question) => {
   question.addEventListener('click', () => {
-    question.classList.toggle('active');
-    const answer = question.nextElementSibling;
-
-    if (question.classList.contains('active')) {
+    const isActive = question.classList.contains('active');
+    faqQuestions.forEach(q => {
+      q.classList.remove('active');
+      q.setAttribute('aria-expanded', 'false');
+      q.nextElementSibling.style.maxHeight = 0;
+    });
+    if (!isActive) {
+      question.classList.add('active');
+      question.setAttribute('aria-expanded', 'true');
+      const answer = question.nextElementSibling;
       answer.style.maxHeight = answer.scrollHeight + 'px';
-    } else {
-      answer.style.maxHeight = 0;
     }
   });
 });
@@ -161,4 +184,27 @@ searchButton.addEventListener('click', (e) => {
   } else {
     alert('Please enter a search term.');
   }
+});
+
+// Lazy Loading Images
+document.addEventListener('DOMContentLoaded', () => {
+  const lazyImages = document.querySelectorAll('img');
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        observer.unobserve(img);
+      }
+    });
+  });
+
+  lazyImages.forEach(img => {
+    if (img.dataset.src) {
+      imageObserver.observe(img);
+    }
+  });
 });
